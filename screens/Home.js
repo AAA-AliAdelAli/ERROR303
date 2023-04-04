@@ -3,7 +3,8 @@ import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
-import LoginScreen  from './Login';
+import Login  from './Login';
+import  Welcome from './Welcome';
 
 const Home= () => {
   const navigation = useNavigation();
@@ -12,7 +13,7 @@ const Home= () => {
     auth
       .signOut()
       .then(() => {
-        navigation.replace("Login");
+        navigation.replace("Welcome");
       })
       .catch((error) => alert(error.message));
   };
