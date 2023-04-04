@@ -5,7 +5,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
 import LoginScreen  from './Login';
 
-const HomeScreen = () => {
+const Home= () => {
   const navigation = useNavigation();
 
   const handleSignOut = () => {
