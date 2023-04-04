@@ -5,12 +5,13 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import React from 'react'
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from './Login'
+import Login from "./Login";
+import Register from "./Register";
 
-const Welcome = ({navigation}) => {
+const Welcome = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.img}
@@ -24,11 +25,14 @@ const Welcome = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")} style={styles.button}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Login")}
+          style={styles.button}
+        >
           <Text style={styles.buttonOutlineText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Register")}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={[styles.buttonOutlineText, styles.buttonOutlineT]}>
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
   Text: {
     fontSize: 70,
     fontWeight: "bold",
-    justifyContent: 'center',
+    justifyContent: "center",
     position: "absolute",
     top: 50,
     color: "#1e5aad",

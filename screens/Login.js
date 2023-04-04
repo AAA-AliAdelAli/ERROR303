@@ -11,9 +11,10 @@ import React, { useState, useEffect } from "react";
 
 import { useNavigation } from "@react-navigation/core";
 
-import { auth } from "../firebase"
+import { auth } from "../firebase";
 
-import Home  from './Home'; 
+import Home from "./Home";
+import Register from "./Register";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,17 +30,7 @@ const Login = () => {
     return sub;
   }, []);
 
-  const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Register with :", user.email);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
+  
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
@@ -80,7 +71,7 @@ const Login = () => {
           <Text style={styles.buttonOutlineText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={handleSignUp}
+          onPress={() => navigation.navigate("Register")}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={[styles.buttonOutlineText, styles.buttonOutlineT]}>
@@ -105,12 +96,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     position: "relative",
     justifyContent: "flex-start",
-    alignItems: 'flex-start',
-    
+    alignItems: "flex-start",
   },
 
   inputContainer: {
-    width:50,
+    width: 50,
     marginTop: 10,
     padding: 50,
   },
@@ -122,17 +112,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#d6d7da",
     borderRadius: 5,
-    color:'white',
-    fontWeight: 'bold',
-    
+    color: "white",
+    fontWeight: "bold",
   },
 
   buttonContainer: {
-    
     width: "60%",
     justifyContent: "center",
     alignItems: "center",
-    
   },
 
   button: {
@@ -163,6 +150,5 @@ const styles = StyleSheet.create({
     color: "#0782e2",
   },
 });
-
 
 export default Login;

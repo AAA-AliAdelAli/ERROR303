@@ -3,10 +3,10 @@ import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
-import Login  from './Login';
-import  Welcome from './Welcome';
+import Login from "./Login";
+import Welcome from "./Welcome";
 
-const Home= () => {
+const Home = () => {
   const navigation = useNavigation();
 
   const handleSignOut = () => {
@@ -26,10 +26,7 @@ const Home= () => {
       </TouchableOpacity>
     </View>
   );
-  };
-
-
-  
+};
 
 export default Home;
 
@@ -39,7 +36,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
 
-color:'black'  }, 
+    color: "black",
+  },
   button: {
     backgroundColor: "#0782F9",
     width: "60%",
@@ -52,7 +50,5 @@ color:'black'  },
     color: "white",
     fontWeight: "700",
     fontSize: 16,
-    
-
   },
 });
