@@ -35,9 +35,7 @@ const Register = () => {
       <ImageBackground
         source={require("../photos/background.jpg")} 
         style={styles.container}>
-
-
-
+          
         <Text style={styles.title}>Easy Booking</Text>
         <TextInput
           style={styles.input}
@@ -98,10 +96,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 20,
     color: "white",
-    backgroundColor: "#1e5aad",
+    backgroundColor: "white",
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "#1e5aad",
     padding: 10,
     borderRadius: 5,
     width: "80%",
@@ -113,7 +111,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   link: {
-    color: "blue",
+    color: "white",
+    fontWeight: "bold",
+
     textDecorationLine: "underline",
   },
 });

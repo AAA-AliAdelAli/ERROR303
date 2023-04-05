@@ -15,6 +15,7 @@ import { auth } from "../firebase";
 
 import Home from "./Home";
 import Register from "./Register";
+import ForgotPassword from './ForgetPassword'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -52,14 +53,14 @@ const Login = () => {
       <View styles={styles.inputContainer}>
         <TextInput
           placeholder="Email"
-          placeholderTextColor="white"
+          placeholderTextColor="black"
           value={email}
           onChangeText={(text) => setEmail(text)}
           style={styles.input}
         />
         <TextInput
           placeholder="Password"
-          placeholderTextColor="white"
+          placeholderTextColor="black"
           value={password}
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
@@ -77,6 +78,9 @@ const Login = () => {
           <Text style={[styles.buttonOutlineText, styles.buttonOutlineT]}>
             Register
           </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("ForgetPassword")}>
+          <Text style={styles.link}>ForgetPassword</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
@@ -104,15 +108,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 50,
   },
+  link: {
+    color: "white",
+    width: "80%",
+    marginTop: 10,
+    fontWeight: "bold",
+  },
 
   input: {
     height: 40,
     marginTop: 25,
     width: 300,
     borderWidth: 1,
-    borderColor: "#d6d7da",
+    backgroundColor: "white",
     borderRadius: 5,
-    color: "white",
+    color: "black",
     fontWeight: "bold",
   },
 

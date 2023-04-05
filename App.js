@@ -2,6 +2,7 @@ import Welcome from "./screens/Welcome";
 import Login from "./screens/Login";
 import Home from "./screens/Home";
 import Register from "./screens/Register";
+import ForgetPassword from "./screens/ForgetPassword";
 import * as React from "react";
 import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,6 +20,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );
