@@ -32,8 +32,7 @@ const Register = () => {
   };
   return (
     
-      <ImageBackground
-        source={require("../photos/background.jpg")} 
+      <View 
         style={styles.container}>
           
         <Text style={styles.title}>Easy Booking</Text>
@@ -69,15 +68,14 @@ const Register = () => {
           <Text style={styles.link}>Already have an account? Login</Text>
         </TouchableOpacity>
       
-    </ImageBackground>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  img: {
-    flex: 1,
-  },
+  
   container: {
+    backgroundColor: "#93b7eb",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -111,7 +109,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   link: {
-    color: "white",
+    color: "#1e5aad",
     fontWeight: "bold",
 
     textDecorationLine: "underline",

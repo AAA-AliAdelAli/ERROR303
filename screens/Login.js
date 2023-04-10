@@ -45,10 +45,9 @@ const Login = () => {
   };
 
   return (
-    <ImageBackground
+    <View
       style={styles.Container}
-      source={require("../photos/background.jpg")}
-    >
+       >
       <Text style={styles.Text}>Easy Booking</Text>
       <View styles={styles.inputContainer}>
         <TextInput
@@ -82,13 +81,14 @@ const Login = () => {
         <TouchableOpacity onPress={() => navigation.navigate("ForgetPassword")}>
           <Text style={styles.link}>ForgetPassword</Text>
         </TouchableOpacity>
+        
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 const styles = StyleSheet.create({
   Container: {
-    backgroundColor: "#164382",
+    backgroundColor: "#93b7eb",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -96,8 +96,9 @@ const styles = StyleSheet.create({
   },
   Text: {
     fontSize: 70,
+    marginLeft: -10,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#1e5aad",
     position: "relative",
     justifyContent: "flex-start",
     alignItems: "flex-start",
@@ -109,20 +110,25 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   link: {
-    color: "white",
-    width: "80%",
-    marginTop: 10,
+    color: "black",
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+    width: "160%",
+    marginTop: 15,
     fontWeight: "bold",
   },
 
   input: {
     height: 40,
-    marginTop: 25,
+    marginTop: 15,
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1,
     width: 300,
     borderWidth: 1,
+    color: "white",
     backgroundColor: "white",
     borderRadius: 5,
-    color: "black",
     fontWeight: "bold",
   },
 
@@ -142,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonOutline: {
-    color: "#eee",
+    color: "#fff",
     backgroundColor: "black",
     width: "100%",
     padding: 15,
