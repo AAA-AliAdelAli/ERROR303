@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "ERROR303",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "slug": "ERROR303",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,17 +15,32 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.yourcompany.yourappname"
+    },
     "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname",
       "supportsTablet": true
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
+    
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
   }
 }

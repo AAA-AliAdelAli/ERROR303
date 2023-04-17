@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageBackground,
+  SafeAreaView,
   TouchableOpacity,
   TextInput,
 } from "react-native";
@@ -12,7 +12,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/core";
 
 import { auth } from "../firebase";
-
+import StackNavigator from "../StackNavigator";
 import Home from "./Home";
 import Register from "./Register";
 import ForgotPassword from './ForgetPassword'
@@ -22,11 +22,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
+
   useEffect(() => {
     const sub = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.replace("Home");
-      }
+        navigation.replace("Main");    }
     });
     return sub;
   }, []);
@@ -45,126 +45,149 @@ const Login = () => {
   };
 
   return (
-    <View
+    <SafeAreaView
       style={styles.Container}
-       >
-      <Text style={styles.Text}>Easy Booking</Text>
-      <View styles={styles.inputContainer}>
-        <TextInput
-          placeholder="Email"
-          placeholderTextColor="black"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Password"
-          placeholderTextColor="black"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
+    >
+      <KeyboardAvoidingView>
+        <View style={styles.TextContainer}>
+          <Text style={styles.TextTitle}>Easy Booking</Text>
+          <Text style={styles.Text}>sign in to your accout</Text>
+        </View>
+        <View styles={styles.inputCont}>
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="black"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={[styles.input, styles.inputM]}
+          />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="black"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            style={styles.inputM}
+            secureTextEntry
+          />
+        </View>
+
+        <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
           <Text style={styles.buttonOutlineText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Register")}
-          style={[styles.button, styles.buttonOutline]}
+
         >
-          <Text style={[styles.buttonOutlineText, styles.buttonOutlineT]}>
+          <Text style={styles.link} >
             Register
+
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("ForgetPassword")}>
           <Text style={styles.link}>ForgetPassword</Text>
         </TouchableOpacity>
-        
-      </View>
-    </View>
+        <TouchableOpacity onPress={[]} style={styles.googleLoginButton}>
+          <Text style={styles.buttonOutlineText}>Login with Google</Text>
+        </TouchableOpacity>
+
+
+
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   Container: {
-    backgroundColor: "#93b7eb",
+    backgroundColor: "#7ca9e8",
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
+    padding: 10,
+    alignItems: 'center',
+    color: "black",
   },
-  Text: {
-    fontSize: 70,
-    marginLeft: -10,
-    fontWeight: "bold",
-    color: "#1e5aad",
-    position: "relative",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+  TextContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 100,
+
   },
 
-  inputContainer: {
-    width: 50,
-    marginTop: 10,
-    padding: 50,
-  },
-  link: {
-    color: "black",
+  TextTitle: {
+    fontSize: 17,
     fontWeight: "bold",
-    textDecorationLine: "underline",
-    width: "160%",
-    marginTop: 15,
-    fontWeight: "bold",
+    color: "#172034",
   },
+
+  Text: {
+    fontSize: 20,
+    marginTop: 20,
+    fontWeight: 'bold'
+
+  },
+
 
   input: {
     height: 40,
-    marginTop: 15,
-    marginBottom: 10,
+    marginTop: 60,
+    marginBottom: 30,
     padding: 10,
     borderWidth: 1,
     width: 300,
-    borderWidth: 1,
-    color: "white",
-    backgroundColor: "white",
+    borderWidth: 2,
+    color: "black",
     borderRadius: 5,
     fontWeight: "bold",
   },
-
-  buttonContainer: {
-    width: "60%",
-    justifyContent: "center",
-    alignItems: "center",
+  inputM: {
+    height: 40,
+    padding: 10,
+    width: 300,
+    borderWidth: 2,
+    borderRadius: 5,
+    fontWeight: "bold",
+    color: "black",
   },
 
-  button: {
-    backgroundColor: "#0782e2",
-    width: "100%",
+  RegisterBt: {
+    width: 200,
+    backgroundColor: '#1e5aad',
     padding: 15,
-    borderRadius: 50,
-    marginTop: 10,
+    borderRadius: 7,
+    alignItems: 'center',
+    marginTop: 20,
+    marginLeft: "auto",
+    marginRight: "auto",
 
-    alignItems: "center",
+
   },
-  buttonOutline: {
-    color: "#fff",
-    backgroundColor: "black",
-    width: "100%",
-    padding: 15,
-    alignItems: "center",
-
-    borderRadius: 50,
-    marginTop: 10,
+  loginButton: {
+    marginTop: 30,
+    backgroundColor: 'blue',
+    borderRadius: 8,
+    paddingVertical: 16,
+    alignItems: 'center',
+    marginBottom: 16,
   },
-
   buttonOutlineText: {
+    color: 'white',
     fontSize: 16,
-    fontWeight: "700",
+    fontWeight: 'bold',
   },
-  buttonOutlineT: {
-    color: "#0782e2",
+  link: {
+    fontSize: 16,
+    color: 'blue',
+    textAlign: 'center',
+    marginBottom: 16,
   },
+  googleLoginButton: {
+    backgroundColor: 'red',
+    borderRadius: 8,
+    paddingVertical: 16,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  
 });
 
+
 export default Login;
+

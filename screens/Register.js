@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  Alert
 } from "react-native";
 
 
@@ -20,15 +21,28 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const handleSignUp = () => {
+    if(name === "" || username ==="" || email===""||password===""){
+      Alert.alert('invalid detials',
+         'enter all userCredentials ', [
+          {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]);
+    }
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Register with :", user.email);
+       
+        navigation.replace("Main");
       })
-      .catch((error) => {
-        alert(error.message);
-      });
+      // .catch((error) => {
+      //   alert(error.message);
+      // });
   };
   return (
     
@@ -93,7 +107,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderRadius: 5,
     marginBottom: 20,
-    color: "white",
+    color: "black",
     backgroundColor: "white",
   },
   button: {
@@ -105,7 +119,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonText: {
-    color: "#fff",
+    color: "black",
     fontWeight: "bold",
   },
   link: {
