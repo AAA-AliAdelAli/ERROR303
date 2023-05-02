@@ -6,6 +6,7 @@ import Home from "./screens/Home";
 import Saved from "./screens/Saved";
 import Booking from "./screens/Booking";
 import Profile from "./screens/Profile";
+import Edit from './screens/Edit';
 import { NavigationContainer } from "@react-navigation/native";
 import {AntDesign, Entypo,Ionicons } from "@expo/vector-icons";
 import Login from "./screens/Login";
@@ -89,6 +90,7 @@ const StackNavigator = () => {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
         <Stack.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
+        <Stack.Screen name="Edit" component={Edit} options={{headerShown:false}}/>
         <Stack.Screen name="Register" component={Register} options={{headerShown:false}}/>
         <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{headerShown:false}}/>
         <Stack.Screen name="Main" component={BottomTabs} options={{headerShown:false}}/>
