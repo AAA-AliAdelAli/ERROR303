@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   googleLoginButton: {
-    backgroundColor: 'red',
+    backgroundColor: 'black',
     borderRadius: 8,
     paddingVertical: 16,
     alignItems: 'center',
