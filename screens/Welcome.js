@@ -15,10 +15,10 @@ const Welcome = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.img}
-      source={require("../photos/background.jpg")}
+      source={require("../assets/hotel1.jpg")}
     >
       <View style={styles.vi}>
-        <Text style={styles.Text}>Easy Booking</Text>
+        <Text style={styles.Text}>EasyBooking</Text>
 
         <Text style={styles.mText}>
           easy booking the best way to find hotel what are you waiting!

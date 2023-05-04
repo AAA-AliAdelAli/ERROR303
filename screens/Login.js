@@ -16,6 +16,7 @@ import StackNavigator from "../StackNavigator";
 import Home from "./Home";
 import Register from "./Register";
 import ForgotPassword from './ForgetPassword'
+import COLORS from "../consts/Colors";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,23 +51,23 @@ const Login = () => {
     >
       <KeyboardAvoidingView>
         <View style={styles.TextContainer}>
-          <Text style={styles.TextTitle}>Easy Booking</Text>
+          <Text style={styles.TextTitle}>EasyBooking</Text>
           <Text style={styles.Text}>sign in to your accout</Text>
         </View>
         <View styles={styles.inputCont}>
           <TextInput
             placeholder="Email"
-            placeholderTextColor="black"
+            placeholderTextColor={COLORS.dark} 
             value={email}
             onChangeText={(text) => setEmail(text)}
-            style={[styles.input, styles.inputM]}
+            style={[styles.input, styles.inputM, { backgroundColor: 'white' }]}
           />
           <TextInput
             placeholder="Password"
-            placeholderTextColor="black"
+            placeholderTextColor={COLORS.dark}
             value={password}
             onChangeText={(text) => setPassword(text)}
-            style={styles.inputM}
+            style={[styles.inputM ,{ backgroundColor: 'white' }]}
             secureTextEntry
           />
         </View>
@@ -98,33 +99,31 @@ const Login = () => {
 };
 const styles = StyleSheet.create({
   Container: {
-    backgroundColor: "#7ca9e8",
+    backgroundColor: "#222831",
     flex: 1,
     padding: 10,
     alignItems: 'center',
-    color: "black",
+    color: "#fff",
   },
   TextContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100,
-
   },
-
   TextTitle: {
-    fontSize: 17,
+    fontSize: 22,
     fontWeight: "bold",
-    color: "#172034",
+    color: "#00adb5",
   },
-
   Text: {
     fontSize: 20,
     marginTop: 20,
-    fontWeight: 'bold'
-
+    fontWeight: 'bold',
+    color: "#fff"
   },
-
-
+  inputCont:{
+    backgroundColor: "#fff",
+  },
   input: {
     height: 40,
     marginTop: 60,
@@ -133,7 +132,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 300,
     borderWidth: 2,
-    color: "black",
+    color:"#fff",
     borderRadius: 5,
     fontWeight: "bold",
   },
@@ -146,46 +145,42 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
   },
-
   RegisterBt: {
     width: 200,
-    backgroundColor: '#1e5aad',
+    backgroundColor: "#00adb5",
     padding: 15,
     borderRadius: 7,
     alignItems: 'center',
     marginTop: 20,
     marginLeft: "auto",
     marginRight: "auto",
-
-
   },
   loginButton: {
     marginTop: 30,
-    backgroundColor: 'blue',
+    backgroundColor: "#00adb5",
     borderRadius: 8,
     paddingVertical: 16,
     alignItems: 'center',
     marginBottom: 16,
   },
   buttonOutlineText: {
-    color: 'white',
+    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
   link: {
     fontSize: 16,
-    color: 'blue',
+    color: "#f0f0f0",
     textAlign: 'center',
     marginBottom: 16,
   },
   googleLoginButton: {
-    backgroundColor: 'black',
+    backgroundColor: "#00adb5",
     borderRadius: 8,
     paddingVertical: 16,
     alignItems: 'center',
     marginBottom: 16,
   },
-  
 });
 
 

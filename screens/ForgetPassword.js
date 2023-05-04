@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Alert, StyleSheet , ImageBackground} from "react-native";
+import { View, TextInput, Button, Alert, StyleSheet, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
 import { auth } from "../firebase";
@@ -20,12 +20,12 @@ const ForgetPassword = () => {
 
   return (
     <ImageBackground
-      source={require("../photos/background.jpg")}
+      source={require("../assets/hotel2.jpg")}
       style={styles.container}
     >
       <View style={styles.container}>
         <TextInput
-        style={styles.input}
+          style={styles.input}
           placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -43,10 +43,11 @@ const styles = StyleSheet.create({
 
     color: "black",
   },
-  input: { width: 200, marginBottom: 15, padding: 5,
+  input: {
+    width: 200, marginBottom: 15, padding: 5,
     backgroundColor: "white",
-  
-  
+
+
   },
 
 

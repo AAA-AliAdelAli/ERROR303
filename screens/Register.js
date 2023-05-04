@@ -13,6 +13,7 @@ import {
   ImageBackground,
   Alert
 } from "react-native";
+import COLORS from "../consts/Colors";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
@@ -69,28 +70,32 @@ const Register = () => {
       <View 
         style={styles.container}>
           
-        <Text style={styles.title}>Easy Booking</Text>
+        <Text style={styles.title}>EasyBooking</Text>
         <TextInput
           style={styles.input}
           placeholder="Name"
+          placeholderTextColor={COLORS.dark}
           value={name}
           onChangeText={(text) => setName(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Username"
+          placeholderTextColor={COLORS.dark}
           value={username}
           onChangeText={(text) => setUsername(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
+          placeholderTextColor={COLORS.dark}
           value={email}
           onChangeText={setEmail}
         />
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
         <TextInput
           style={styles.input}
+          placeholderTextColor={COLORS.dark}
           placeholder="Password"
           value={password}
           secureTextEntry
@@ -113,7 +118,7 @@ const Register = () => {
 const styles = StyleSheet.create({
   
   container: {
-    backgroundColor: "#93b7eb",
+    backgroundColor: "#222831",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 30,
-    color: "#1e5aad",
+    color: COLORS.primary,
   },
   input: {
     width: "80%",
@@ -131,23 +136,27 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderRadius: 5,
     marginBottom: 20,
-    color: "black",
+    color: COLORS.dark,
     backgroundColor: "white",
   },
   button: {
-    backgroundColor: "#1e5aad",
+    backgroundColor:  COLORS.primary,
     padding: 10,
     borderRadius: 5,
+    
     width: "80%",
     alignItems: "center",
     marginBottom: 20,
   },
   buttonText: {
-    color: "black",
+    color: COLORS.white,
     fontWeight: "bold",
+    fontSize:20,
   },
   link: {
-    color: "#1e5aad",
+    marginTop:10,
+    fontSize:18,
+    color: "#eee",
     fontWeight: "bold",
 
     textDecorationLine: "underline",

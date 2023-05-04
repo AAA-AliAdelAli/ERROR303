@@ -28,56 +28,56 @@ export default function Profile({ navigation }) {
   const [birthdate, setBirthdate] = useState("1/1/1990");
   const [phoneNumber, setPhoneNumber] = useState("01113279748");
   const [isSubmitted, setIsSubmitted] = useState(false);
-const [validationErrors, setValidationErrors] = useState({});
+  const [validationErrors, setValidationErrors] = useState({});
 
-//--------------------------------validation-------------------------------------------------------------
-const validateForm = () => {
-  const errors = {};
+  //--------------------------------validation-------------------------------------------------------------
+  const validateForm = () => {
+    const errors = {};
 
-  // Validate first name
-  if (!firstName) {
-    errors.firstName = "First name is required";
-  }
+    // Validate first name
+    if (!firstName) {
+      errors.firstName = "First name is required";
+    }
 
-  // Validate last name
-  if (!lastName) {
-    errors.lastName = "Last name is required";
-  }
+    // Validate last name
+    if (!lastName) {
+      errors.lastName = "Last name is required";
+    }
 
-  // Validate email
-  if (!email) {
-    errors.email = "Email is required";
-  } else if (!/^\S+@\S+\.\S+$/.test(email)) {
-    errors.email = "Invalid email address";
-  }
+    // Validate email
+    if (!email) {
+      errors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      errors.email = "Invalid email address";
+    }
 
-  // Validate birthdate
-  if (!birthdate) {
-    errors.birthdate = "Birthdate is required";
-  }
+    // Validate birthdate
+    if (!birthdate) {
+      errors.birthdate = "Birthdate is required";
+    }
 
-  // Validate phone number
-  if (!phoneNumber) {
-    errors.phoneNumber = "Phone number is required";
-  } else if (!/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/.test(phoneNumber)) {
-    errors.phoneNumber = "Invalid phone number";
-  }
+    // Validate phone number
+    if (!phoneNumber) {
+      errors.phoneNumber = "Phone number is required";
+    } else if (!/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/.test(phoneNumber)) {
+      errors.phoneNumber = "Invalid phone number";
+    }
 
-  setValidationErrors(errors);
+    setValidationErrors(errors);
 
-  return Object.keys(errors).length === 0;
-};
-
-
+    return Object.keys(errors).length === 0;
+  };
 
 
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+  //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   const handleSaveProfile = () => {
     const isFormValid = validateForm();
 
     if (isFormValid) {
       // TODO: handle saving profile changes to backend
-    //  setIsEditMode(false);
+      //  setIsEditMode(false);
     } else {
       setIsSubmitted(true);
       setIsEditMode(false);
@@ -110,66 +110,66 @@ const validateForm = () => {
     </View>
   );
   //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- const renderEditMode = () => (
-   <View style={styles.container}>
-     {/* <Image
+  const renderEditMode = () => (
+    <View style={styles.container}>
+      {/* <Image
       //  source={require("../assets/profile.png")}
        style={styles.provileAvatar}
      /> */}
 
-     <TextInput
-       value={firstName}
-       onChangeText={setFirstName}
-       placeholder="First Name"
-       style={styles.textInput}
-     />
-     {firstName.length < 3 && (
-       <Text style={styles.validationError}>First name is too short.</Text>
-     )}
-     <TextInput
-       value={lastName}
-       onChangeText={setLastName}
-       placeholder="Last Name"
-       style={styles.textInput}
-     />
-     {lastName.length < 3 && (
-       <Text style={styles.validationError}>Last name is too short.</Text>
-     )}
-     <Text style={styles.label}>Email:</Text>
-     <Text style={[styles.value, styles.dimmedValue]}>{email}</Text>
-     <TextInput
-       value={birthdate}
-       onChangeText={setBirthdate}
-       placeholder="Birthdate (MM/DD/YYYY)"
-       style={styles.textInput}
-     />
-     {!/^([1-9]|1[0-2])\/([1-9]|[12]\d|3[01])\/\d{4}$/.test(birthdate) && (
-       <Text style={styles.validationError}>
-         Birthdate format must be MM/DD/YYYY.
-       </Text>
-     )}
-     <TextInput
-       value={phoneNumber}
-       onChangeText={setPhoneNumber}
-       placeholder="Phone Number"
-       style={styles.textInput}
-     />
-     {!/^\d{3}\d{3}\d{4}\d{1}$/.test(phoneNumber) && (
-       <Text style={styles.validationError}>
-         Phone number format must be 11 number.
-       </Text>
-     )}
-     <TouchableOpacity onPress={handleSaveProfile} style={styles.saveButton}>
-       <Text style={styles.saveButtonText}>Save Profile</Text>
-     </TouchableOpacity>
-     <TouchableOpacity
-       onPress={() => setIsEditMode(false)}
-       style={styles.cancelButton}
-     >
-       <Text style={styles.cancelButtonText}>Cancel</Text>
-     </TouchableOpacity>
-   </View>
- );
+      <TextInput
+        value={firstName}
+        onChangeText={setFirstName}
+        placeholder="First Name"
+        style={styles.textInput}
+      />
+      {firstName.length < 3 && (
+        <Text style={styles.validationError}>First name is too short.</Text>
+      )}
+      <TextInput
+        value={lastName}
+        onChangeText={setLastName}
+        placeholder="Last Name"
+        style={styles.textInput}
+      />
+      {lastName.length < 3 && (
+        <Text style={styles.validationError}>Last name is too short.</Text>
+      )}
+      <Text style={styles.label}>Email:</Text>
+      <Text style={[styles.value, styles.dimmedValue]}>{email}</Text>
+      <TextInput
+        value={birthdate}
+        onChangeText={setBirthdate}
+        placeholder="Birthdate (MM/DD/YYYY)"
+        style={styles.textInput}
+      />
+      {!/^([1-9]|1[0-2])\/([1-9]|[12]\d|3[01])\/\d{4}$/.test(birthdate) && (
+        <Text style={styles.validationError}>
+          Birthdate format must be MM/DD/YYYY.
+        </Text>
+      )}
+      <TextInput
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
+        placeholder="Phone Number"
+        style={styles.textInput}
+      />
+      {!/^\d{3}\d{3}\d{4}\d{1}$/.test(phoneNumber) && (
+        <Text style={styles.validationError}>
+          Phone number format must be 11 number.
+        </Text>
+      )}
+      <TouchableOpacity onPress={handleSaveProfile} style={styles.saveButton}>
+        <Text style={styles.saveButtonText}>Save Profile</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => setIsEditMode(false)}
+        style={styles.cancelButton}
+      >
+        <Text style={styles.cancelButtonText}>Cancel</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   return <View>{isEditMode ? renderEditMode() : renderViewMode()}</View>;
