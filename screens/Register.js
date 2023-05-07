@@ -1,9 +1,6 @@
-
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import Login from "./Login";
-import { auth } from "../firebase";
 import {
   StyleSheet,
   Text,
@@ -15,16 +12,28 @@ import {
 } from "react-native";
 import COLORS from "../consts/Colors";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { auth, db } from '../firebase';
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const Register = () => {
   const navigation = useNavigation();
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const db = getFirestore();
+
+  const addUserToDataBase = async () => {
+    await setDoc(doc(db, 'users', auth.currentUser.uid), {
+      setFirstName: firstName,
+      setLastName:lastName,
+      email: email,
+      username: username,
+    });
+  };
 
   const handleSignUp = () => {
     if (validateEmail(email) && validatePassword(password)  ) {
@@ -32,6 +41,7 @@ const Register = () => {
         .then((userCredential) => {
           console.log("Register");
           const user = userCredential.user;
+          addUserToDataBase();
           navigation.replace("Main");
         })
         .catch((error) => {
@@ -65,41 +75,46 @@ const Register = () => {
       return true;
     }
   };
+
   return (
-    
-      <View 
-        style={styles.container}>
-          
-        <Text style={styles.title}>EasyBooking</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          placeholderTextColor={COLORS.dark}
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          placeholderTextColor={COLORS.dark}
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor={COLORS.dark}
-          value={email}
-          onChangeText={setEmail}
-        />
-        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-        <TextInput
-          style={styles.input}
-          placeholderTextColor={COLORS.dark}
-          placeholder="Password"
-          value={password}
-          secureTextEntry
-          onChangeText={setPassword}
+    <View style={styles.container}>
+      <Text style={styles.title}>EasyBooking</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="First Name"
+        placeholderTextColor={COLORS.dark}
+        value={firstName}
+        onChangeText={(text) => setFirstName(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Last Name"
+        placeholderTextColor={COLORS.dark}
+        value={lastName}
+        onChangeText={(text) => setLastName(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        placeholderTextColor={COLORS.dark}
+        value={username}
+        onChangeText={(text) => setUsername(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        placeholderTextColor={COLORS.dark}
+        value={email}
+        onChangeText={setEmail}
+      />
+      {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+      <TextInput
+        style={styles.input}
+        placeholderTextColor={COLORS.dark}
+        placeholder="Password"
+        value={password}
+        secureTextEntry
+        onChangeText={setPassword}
         />
         {passwordError ? (
         <Text style={styles.errorText}>{passwordError}</Text>

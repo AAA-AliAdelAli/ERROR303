@@ -23,7 +23,7 @@ import ImagePicker from "react-native-image-picker";
 export default function Profile({ navigation }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [firstName, setFirstName] = useState("ali");
-  const [lastName, setLastName] = useState("adel");
+  const [lastName, setName] = useState("adel");
   const [email, setEmail] = useState("ali@mail.com");
   const [birthdate, setBirthdate] = useState("1/1/1990");
   const [phoneNumber, setPhoneNumber] = useState("01113279748");
