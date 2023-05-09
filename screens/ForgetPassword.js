@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Alert, StyleSheet, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/core";
+import COLORS from "../consts/Colors";
 
 import { auth } from "../firebase";
 
@@ -19,36 +20,43 @@ const ForgetPassword = () => {
   };
 
   return (
-    <ImageBackground
-      source={require("../assets/hotel2.jpg")}
-      style={styles.container}
-    >
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <Button title="Reset Password" onPress={handleResetPassword} />
-      </View>
-    </ImageBackground>
+
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+      <Button
+        title="Reset Password"
+        onPress={handleResetPassword}
+        color={COLORS.primary}
+
+      />
+    </View>
+
   );
 };
 const styles = StyleSheet.create({
   container: {
+
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
+    backgroundColor: COLORS.dark,
     color: "black",
   },
   input: {
-    width: 200, marginBottom: 15, padding: 5,
+    width: 200,
+    marginBottom: 15,
+    padding: 5,
     backgroundColor: "white",
-
-
   },
+  bt: {
+
+
+  }
 
 
 });

@@ -39,6 +39,8 @@ const Register = () => {
     if (validateEmail(email) && validatePassword(password)  ) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+          const email = userCredential._tokenResponse.email;
+
           console.log("Register");
           const user = userCredential.user;
           addUserToDataBase();

@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React, { useLayoutEffect, useState } from "react";
+
 import {
   Dimensions,
   FlatList,
@@ -11,15 +13,34 @@ import {
   View,
   Image,
   Animated,
+  Pressable,
+  Button,
+  TouchableWithoutFeedback
 } from 'react-native';
-
+import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/Colors';
 import hotels from '../consts/hotels';
+import Search from "./Search";
 const { width } = Dimensions.get('screen');
 const cardWidth = width / 1.8;
 
-const Home = ({ navigation }) => {
+// import Header from "../components/Header";
+import { Feather } from "@expo/vector-icons";
+import DatePicker from "react-native-date-ranges";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+// import { BottomModal } from "react-native-modals";
+// import { ModalFooter } from "react-native-modals";
+// import { ModalButton } from "react-native-modals";
+// import { ModalTitle } from "react-native-modals";
+// import { SlideAnimation } from "react-native-modals";
+// import { ModalContent } from "react-native-modals";
+
+const Home = () => {
+  const [selectedDates, setSelectedDates] = useState();
+  const navigation = useNavigation();
+
   const categories = ['All', 'Popular', 'Top Rated', 'Featured',];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   const [activeCardIndex, setActiveCardIndex] = React.useState(0);
@@ -78,7 +99,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         disabled={activeCardIndex != index}
         activeOpacity={1}
-        onPress={() => navigation.navigate('DetailsScreen', hotel)}>
+        onPress={() => navigation.navigate('Details', hotel)}>
         <Animated.View style={{ ...styles.card, transform: [{ scale }] }}>
           <Animated.View style={{ ...styles.cardOverLay, opacity }} />
           <View style={styles.priceTag}>
@@ -121,6 +142,24 @@ const Home = ({ navigation }) => {
       </TouchableOpacity>
     );
   };
+  const customButton = (onConfirm) => {
+    return (
+      <Button
+        onPress={onConfirm}
+        style={{
+          container: {
+            width: "100%",
+            marginHorizontal: "10%",
+            borderRadius: 10,
+          },
+          text: { fontSize: 25, fontWeight: 'bold', color: "white" },
+        }}
+        color={COLORS.primary}
+        title="Save"
+      />
+    );
+  };
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.dark }}>
@@ -138,13 +177,16 @@ const Home = ({ navigation }) => {
         </View>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.searchInputContainer}>
-          <Icon name="search" size={20} style={{ marginLeft: 20 }} />
-          <TextInput
-            placeholder="Search"
-            style={{ fontSize: 20, paddingLeft: 10 }}
-          />
-        </View>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Search')}>
+          <View style={styles.searchInputContainer}>
+            <Icon name="search" size={20} style={{ marginLeft: 20 }} />
+            <TextInput
+              placeholder="click for search"
+              style={{ fontSize: 20, paddingLeft: 10 }}
+              onTouchStart={() => navigation.navigate('Search')}
+            />
+          </View>
+        </TouchableWithoutFeedback>
         <CategoryList />
         <View>
           <Animated.FlatList
@@ -198,6 +240,30 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  searchpress: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    paddingHorizontal: 10,
+    borderWidth: 2,
+    paddingVertical: 15,
+    borderColor: COLORS.primary,
+  },
+
+  searchBtPress: {
+    paddingHorizontal: 10,
+    borderColor: COLORS.primary,
+    borderWidth: 2,
+    paddingVertical: 15,
+    backgroundColor: COLORS.primary,
+  },
+  searchBtPressText: {
+    textAlign: "center",
+    fontSize: 18,
+
+    fontWeight: "bold",
+    color: COLORS.secondary,
   },
   categoryListContainer: {
     flexDirection: 'row',

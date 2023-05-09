@@ -9,15 +9,16 @@ import {
 } from 'react-native';
 import COLORS from '../consts/Colors';
 import Booking from './Booking';
+import Confirmation from './Confirmation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 
-const DetailsScreen = ({ route }) => {
+const Details = ({ route }) => {
   const item = route.params;
   const navigation = useNavigation();
 
   const handleBookNow = () => {
-    navigation.navigate('Booking', { item });
+    navigation.navigate('Confirmation', { item });
   };
 
   return (
@@ -25,7 +26,8 @@ const DetailsScreen = ({ route }) => {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         backgroundColor: COLORS.dark,
-        paddingBottom: 20,
+        flex:1
+        
       }}>
       <StatusBar
         barStyle="light-content"
@@ -184,4 +186,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen;
+export default Details;

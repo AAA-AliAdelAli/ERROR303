@@ -80,16 +80,16 @@ const Login = () => {
 
         >
           <Text style={styles.link} >
-            Register
+          Don't have an account? Sign up
 
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("ForgetPassword")}>
           <Text style={styles.link}>ForgetPassword</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={[]} style={styles.googleLoginButton}>
+        {/* <TouchableOpacity onPress={[]} style={styles.googleLoginButton}>
           <Text style={styles.buttonOutlineText}>Login with Google</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
 
 
@@ -99,7 +99,7 @@ const Login = () => {
 };
 const styles = StyleSheet.create({
   Container: {
-    backgroundColor: "#222831",
+    backgroundColor: COLORS.dark,
     flex: 1,
     padding: 10,
     alignItems: 'center',
@@ -108,12 +108,14 @@ const styles = StyleSheet.create({
   TextContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 120,
   },
   TextTitle: {
+    marginTop:10,
+    
     fontSize: 22,
     fontWeight: "bold",
-    color: "#00adb5",
+    color: COLORS.primary,
   },
   Text: {
     fontSize: 20,
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    marginTop: 60,
+    marginTop: 80,
     marginBottom: 30,
     padding: 10,
     borderWidth: 1,
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputM: {
-    height: 40,
+    height: 50,
     padding: 10,
     width: 300,
     borderWidth: 2,
@@ -145,19 +147,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
   },
-  RegisterBt: {
-    width: 200,
-    backgroundColor: "#00adb5",
-    padding: 15,
-    borderRadius: 7,
-    alignItems: 'center',
-    marginTop: 20,
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
   loginButton: {
     marginTop: 30,
-    backgroundColor: "#00adb5",
+    backgroundColor: COLORS.primary,
     borderRadius: 8,
     paddingVertical: 16,
     alignItems: 'center',
@@ -174,13 +166,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
   },
-  googleLoginButton: {
-    backgroundColor: "#00adb5",
-    borderRadius: 8,
-    paddingVertical: 16,
-    alignItems: 'center',
-    marginBottom: 16,
-  },
+  // googleLoginButton: {
+  //   backgroundColor: "#00adb5",
+  //   borderRadius: 8,
+  //   paddingVertical: 16,
+  //   alignItems: 'center',
+  //   marginBottom: 16,
+  // },
 });
 
 

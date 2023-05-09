@@ -1,15 +1,15 @@
 import React from "react";
 import Home from "./screens/Home";
-import Saved from "./screens/Saved";
 import Booking from "./screens/Booking";
 import Profile from "./screens/Profile";
 import Edit from './screens/Edit';
 import COLORS from "./consts/Colors";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
-import DetailsScreen from "./screens/DetailsScreen";
+import Details from "./screens/Details";
+import Search from "./screens/Search";
 import ForgetPassword from "./screens/ForgetPassword";
-import Welcome from "./screens/Welcome";
+import Confirmation from "./screens/Confirmation";
 
 
 import { StyleSheet, Text, View , StatusBar} from "react-native";
@@ -50,16 +50,16 @@ const StackNavigator = () => {
         />
 
         <Tab.Screen
-          name="Saved"
-          component={Saved}
+          name="Booking"
+          component={Booking}
           options={{
-            tabBarLabel: "Saved",
+            tabBarLabel: "Bookings",
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <AntDesign name="heart" size={24} color={COLORS.light} />
+                <Ionicons name="notifications" size={24} color={COLORS.light}  />
               ) : (
-                <AntDesign name="hearto" size={24} color="white" />
+                <Ionicons name="notifications-outline" size={24} color="white" />
               ),
           }}
         />
@@ -86,17 +86,18 @@ const StackNavigator = () => {
   
   return (
     <NavigationContainer>
-       
       <Stack.Navigator>
         {/* <Stack.Screen name="Welcome" component={Welcome} options={{headerShown:false}}/> */}
         <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Search" component={Search}   options={{headerShown:false}}/>
         <Stack.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
         <Stack.Screen name="Edit" component={Edit} options={{headerShown:false}}/>
         <Stack.Screen name="Register" component={Register} options={{headerShown:false}}/>
         <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{headerShown:false}}/>
         <Stack.Screen name="Main" component={BottomTabs} options={{headerShown:false}}/>
-        <Stack.Screen name="DetailsScreen"  component={DetailsScreen} options={{headerShown:false}} />
+        <Stack.Screen name="Details"  component={Details} options={{headerShown:false}} />
+        <Stack.Screen name="Confirmation"  component={Confirmation} options={{headerShown:false}} />
         <Stack.Screen name="Booking" component={Booking} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
